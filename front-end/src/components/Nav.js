@@ -22,7 +22,7 @@ const Nav = ()=>{
       <h1 className="mr-5 hover:text-white-900"><Link onClick={logout} to="/signup">Logout  ( {JSON.parse(auth).name} ) </Link></h1>
     </nav>
     :
-    <nav className="md:mr-auto text-white-500 md:ml-4 md:py-1 md:pl-4 md:border-l md:border-white-400	flex flex-wrap items-center text-base justify-center">
+    <nav className="md:mr-auto text-white md:ml-4 md:py-1 md:pl-4 md:border-l md:border-white-400	flex flex-wrap items-center text-base justify-center">
     <h1 className="mr-5 text-white-500 hover:text-white-900"><Link to="/signup">SignUp</Link> </h1>
     <h1 className="mr-5 text-white-500 hover:text-white-900"><Link to="/login">Login</Link></h1>
     </nav>
