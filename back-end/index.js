@@ -69,15 +69,25 @@ app.put('/update/:id', async (req, resp)=>{
     resp.send(result);
 })
 
-app.get('/search/:key', async (req, resp)=>{
-    let result = await Product.find({
-        "$or":[
-            {name:{$regex:req.params.key}},
-            {company:{$regex:req.params.key}},
-            {cotegory:{$regex:req.params.key}}
-        ]
-    });
-    resp.send(result)
+app.get('/search/:key?', async (req, resp)=>{
+    if(req.params.key == null){
+        let products = await Product.find();
+        if(products.length>0)
+        {
+            resp.send(products)
+        }else{
+            resp.send({result:"No Result Found"})
+        }
+    }else{
+        let result = await Product.find({
+            "$or":[
+                {name:{$regex:req.params.key}},
+                {company:{$regex:req.params.key}},
+                {category:{$regex:req.params.key}}
+            ]
+        });
+        resp.send(result)
+    }
 })
 
 app.listen(5000);
